@@ -23,7 +23,7 @@ const metaInfo = execSync(
 const ISP = metaInfo.trim();
 
 // sub subscription
-app.get('/sub', (req, res) => {
+app.get('/sub2', (req, res) => {
   const VMESS = { v: '2', ps: `${NAME}-${ISP}`, add: CFIP, port: '443', id: UUID, aid: '0', scy: 'none', net: 'ws', type: 'none', host: ARGO_DOMAIN, path: '/vmess-argo?ed=2048', tls: 'tls', sni: ARGO_DOMAIN, alpn: '' };
   const vlessURL = `vless://${UUID}@${CFIP}:443?encryption=none&security=tls&sni=${ARGO_DOMAIN}&type=ws&host=${ARGO_DOMAIN}&path=%2Fvless-argo%3Fed%3D2048#${NAME}-${ISP}`;
   const vmessURL = `vmess://${Buffer.from(JSON.stringify(VMESS)).toString('base64')}`;
